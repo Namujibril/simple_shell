@@ -1,0 +1,67 @@
+#include "shell.h"
+
+// Check if the shell is in interactive mode
+int interactive(info_t *info)
+{
+	// Return true if STDIN is a terminal and readfd is within range
+	return (isatty(STDIN_FILENO) && info->readfd <= 2);
+}
+
+// Check if a character is a delimiter
+int is_delim(char c, char *delim)
+{
+	// Iterate through the delimiter string
+	while (*delim)
+	{
+		// Return true if the character matches any delimiter
+		if (*delim++ == c)
+			return (1);
+	}
+
+	// Return false if no match is found
+	return (0);
+}
+
+// Check if a character is alphabetic
+int _isalpha(int c)
+{
+	// Return true if the character is within the range of alphabetic characters
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
+}
+
+// Convert a string to an integer
+int _atoi(char *s)
+{
+	int i, sign = 1, flag = 0, output;
+	unsigned int result = 0;
+
+	// Iterate through the string until a non-digit character is encountered or the end of the string is reached
+	for (i = 0; s[i] != '\0' && flag != 2; i++)
+	{
+		// Handle negative sign
+		if (s[i] == '-')
+			sign *= -1;
+
+		// Convert digit characters to an integer
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			flag = 1;
+			result *= 10;
+			result += (s[i] - '0');
+			}
+		else if (flag == 1)
+			flag = 2;
+	}
+
+	// Apply the sign to the result
+	if (sign == -1)
+		output = -result;
+	else
+		output = result;
+
+	return (output);
+}
+
