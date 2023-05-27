@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * _myexit - exits the shell
+ * _myexit - Exits the shell
  * @info: Structure containing potential arguments
- * Return: exits with a given exit status
- *         (0) if info.argv[0] != "exit"
+ * Return: Exits with a given exit status
+ *         (0) if info->argv[0] != "exit"
  */
 int _myexit(info_t *info)
 {
@@ -17,17 +17,17 @@ int _myexit(info_t *info)
 			print_error(info, "Illegal number: ");
 			_eputs(info->argv[1]);
 			_eputchar('\n');
-			return 1;
+			return (1);
 		}
 		info->err_num = exitcheck;
-		return -2;
+		return (-2);
 	}
 	info->err_num = -1;
-	return -2;
+	return (-2);
 }
 
 /**
- * _mycd - changes the current directory of the process
+ * _mycd - Changes the current directory of the process
  * @info: Structure containing potential arguments
  * Return: Always 0
  */
@@ -53,7 +53,7 @@ int _mycd(info_t *info)
 		{
 			_puts(buffer);
 			_putchar('\n');
-			return 1;
+			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD="));
 		_putchar('\n');
@@ -73,11 +73,11 @@ int _mycd(info_t *info)
 		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
 		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
-	return 0;
+	return (0);
 }
 
 /**
- * _myhelp - changes the current directory of the process
+ * _myhelp - Displays help message
  * @info: Structure containing potential arguments
  * Return: Always 0
  */
@@ -85,6 +85,6 @@ int _myhelp(info_t *info)
 {
 	(void)info;
 	_puts("help call works. Function not yet implemented \n");
-	return 0;
+	return (0);
 }
 
