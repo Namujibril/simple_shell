@@ -270,5 +270,5 @@ Usage: simple_shell [filename]
 -  The file should contain one command per line
 -  In this mode, the shell should not print a prompt and should not read from stdin
 
-
-Authors: Ernest Bhekizwe Shongwe, Garrick Larson Potts. (Credit to my Printf patner, Zikona  Mnyaka, for bringing this project ack to life)
+Authours : Nazifi Muhammad Jibril <Namujibril@gmail.com.com>
+Ruth Yayra Obi <ryobi@st.ug.edu.gh>
